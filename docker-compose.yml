@@ -1,0 +1,18 @@
+version: '2'
+
+volumes:
+  postgres:
+
+services:
+  postgres:
+    image: postgres:9.6
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  jupyter:
+    image: jupyter/datascience-notebook:latest
+    ports:
+      - "52820:8888"
+    volumes:
+      - ./:/home/jovyan
+    command: start-notebook.sh --NotebookApp.password='sha1:53987e611ec3:1a90d791daf75274c73f62f672ecfa935799bdee'
