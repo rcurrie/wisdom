@@ -16,3 +16,11 @@ services:
     volumes:
       - ./:/home/jovyan
     command: start-notebook.sh --NotebookApp.password='sha1:53987e611ec3:1a90d791daf75274c73f62f672ecfa935799bdee'
+
+  pgweb:
+    image: sosedoff/pgweb
+    ports:
+      - "52821:8081"
+    command: ["/usr/bin/pgweb", "--bind=0.0.0.0", "--listen=8081",
+              "--host=postgres", "--user=postgres", "--db=wisdom", "--ssl=disable"]
+
