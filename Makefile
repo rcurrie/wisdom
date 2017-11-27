@@ -17,11 +17,11 @@ jupyter:
 			jupyter start-notebook.sh \
 			--NotebookApp.password='sha1:53987e611ec3:1a90d791daf75274c73f62f672ecfa935799bdee'
 
-import:
+reset:
 	docker exec -it postgres psql -h localhost -U postgres -c "drop database if exists wisdom"
 	docker exec -it postgres psql -h localhost -U postgres -c "create database wisdom"
-	docker exec -it postgres psql -h localhost -U postgres -d wisdom -f /wisdom/create.sql
-	docker exec -it postgres psql -h localhost -U postgres -d wisdom -f /wisdom/import.sql
+	# docker exec -it postgres psql -h localhost -U postgres -d wisdom -f /wisdom/create.sql
+	# docker exec -it postgres psql -h localhost -U postgres -d wisdom -f /wisdom/import.sql
 	# docker exec -it postgres psql -h localhost -U postgres -d wisdom -c "create table reports(id serial primary key, report jsonb)"
 	# docker exec -it postgres psql -h localhost -U postgres -c "\copy reports(report) from '/wisdom/samples/report.json'"
 	# docker exec -it postgres psql -h localhost -U postgres -c "copy reports(report) from '/wisdom/samples/test.json'"
