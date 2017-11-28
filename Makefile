@@ -5,7 +5,7 @@ down:
 	docker-compose down
 
 psql:
-	docker-compose exec -it postgres psql -h localhost -U postgres -d wisdom
+	docker-compose exec postgres psql -h localhost -U postgres
 	
 dump:
 	docker-compose  exec -it postgres pg_dump -h localhost -U postgres -d wisdom
